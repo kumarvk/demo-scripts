@@ -1,9 +1,6 @@
-require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 require 'json'
-
-#page = open('https://twitter.com/esconsult1').read
 
 doc = Nokogiri::HTML(open("https://twitter.com/esconsult1"))
 
@@ -18,10 +15,15 @@ object_array = doc.css("div.tweet.js-stream-tweet.js-actionable-tweet.js-profile
 end
 json_obj = { json_data: object_array }
 
-#json_obj.to_json
-
 # Uncommment following for console output
-=begin
+
+puts ""
+puts "Json Data"
+puts ""
+puts json_obj.to_json
+
+puts ""
+puts "Formated Data"
 object_array.each do |obj|
 	puts ""
 	puts ""
@@ -32,5 +34,3 @@ object_array.each do |obj|
 	puts "tweet_image: " << obj[:tweet_image].to_s
 	puts "body_text  : " << obj[:body_text].to_s
 end 
-puts json_obj.to_json
-=end
